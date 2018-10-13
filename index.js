@@ -4,11 +4,12 @@ const client = new Discord.Client();
 client.login(process.env.TOKEN);
 
 client.on("ready", () => {
-function clear_nicks(){
-    client.guilds.get('482619342131822592').members.filter(memb => memb.displayName.startsWith('!')).forEach(member => member.setNickname(member.displayName.replace(/^!+/gi, '')).catch())
-}
-clear_nicks();
-setInterval(clear_nicks, 300000);});
+    function clear_nicks() {
+        client.guilds.get('482619342131822592').members.filter(memb => memb.displayName.startsWith('!')).forEach(member => member.setNickname(member.displayName.replace(/^!+/gi, '')).catch())
+    }
+    clear_nicks();
+    setInterval(clear_nicks, 300000);
+});
 
 client.on("guildMemberUpdate", (old_memb, new_memb) => {
     if (new_memb.displayName.startsWith('!')) new_memb.setNickname(new_memb.displayName.replace(/^!+/gi, '')).catch();
@@ -26,7 +27,7 @@ let arr = {
     'Fortnite': '384575674054344704',
     'osu!': '451427065221087243',
     'World of Warcraft': '384004065861959680',
-    'Terraria': '444882475416551424', 
+    'Terraria': '444882475416551424',
     'DOTA 2': '381078010092191744',
     'Hearthstone': '444890469759975424',
     'Rocket League': '382217725226909696',
@@ -47,7 +48,7 @@ let arr = {
     'Grand Theft Auto San Andreas': '444891466054238241',
     'San Andreas Multiplayer': '444891466054238241',
 };
- client.on('presenceUpdate', (old, new_) => {
+client.on('presenceUpdate', (old, new_) => {
     if (new_.presence.game && new_.presence.game.name && new_.presence.game.name in arr) {
         if (!new_.roles.has(arr[new_.presence.game.name])) {
             new_.addRole(arr[new_.presence.game.name])
@@ -56,11 +57,15 @@ let arr = {
 });
 
 client.on('message', message => {
-    
+    let rolesNames = '';
+
     if (message.content == '$rolesnames') {
         message.guild.roles.forEach(function(role) {
-            console.log(`${role.name} | ${role.id}\n`);
+            rolesNames += `${role.name} | ${role.id}\n`
         })
-   
+        setTimeout(function() {
+            message.channel.send(rolesNames);
+        }, 3000)
+
     }
 })
