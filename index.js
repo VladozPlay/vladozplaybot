@@ -59,7 +59,7 @@ client.on('message', message => {
     
     if (message.content == '$rolesnames') {
         message.guild.roles.forEach(function(role) {
-            console.log(`${role.name} | ${role.id}`);
+            console.log(`${role.name} | ${role.id}\n`);
         })
    
     }
