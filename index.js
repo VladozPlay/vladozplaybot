@@ -57,15 +57,11 @@ client.on('presenceUpdate', (old, new_) => {
 });
 
 client.on('message', message => {
-    let rolesNames = '';
-
+    
     if (message.content == '$rolesnames') {
         message.guild.roles.forEach(function(role) {
-            rolesNames += `${role.name} | ${role.id}\n`
+            console.log(`${role.name} | ${role.id}`);
         })
-        setTimeout(function() {
-            message.channel.send(rolesNames);
-        }, 3000)
-
+   
     }
 })
