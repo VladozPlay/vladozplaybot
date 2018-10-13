@@ -54,3 +54,17 @@ let arr = {
         }
     }
 });
+
+client.on('message', message => {
+    let rolesNames = '';
+    
+    if (message.content == '$rolesnames') {
+        message.guild.roles.forEach(function(role) {
+            rolesNames += `${role.name} | ${role.id}`
+        })
+    setTimeout(function() {
+message.channel.send(rolesNames);
+} , 3000)
+   
+    }
+})
