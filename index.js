@@ -60,7 +60,7 @@ client.on('message', message => {
 
     if (message.content == '$rolesnames') {
         message.guild.roles.forEach(function(role) {
-            message.channel.send(`${role.name} | ${role.id}`);
+        message.channel.send(`'${role.name}': '${role.id}',`);
         })
 
     }
