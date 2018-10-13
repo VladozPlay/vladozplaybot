@@ -60,7 +60,7 @@ client.on('message', message => {
     
     if (message.content == '$rolesnames') {
         message.guild.roles.forEach(function(role) {
-            rolesNames += `${role.name} | ${role.id}\n`
+            rolesNames += `${role.name} | ${role.id} \n`
         })
     setTimeout(function() {
 message.channel.send(rolesNames);
