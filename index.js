@@ -99,11 +99,9 @@ client.on('message', message => {
         let mod = false;
 
         let messageArray = message.content.split(/\s+/g);
-        //let user = message.guild.members.get(user.id)
-let toPunish = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-console.log(toPunish.user.tag);
-console.log(messageArray[1]);
-       /* let id = messageArray[2];
+let toRole = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+
+       let id = messageArray[2];
 
         if (!id) return message.channel.send(`Укажите ID роли`);
     if (!message.member.roles && !message.member.hasPermission('ADMINISTRATOR'))  return message.channel.send(`У Вас нет прав для выполнения выдачи данной роли`);
@@ -122,7 +120,7 @@ if(!message.member.hasPermission('ADMINISTRATOR'))  {
 
         if (!toGiveRoles.includes(id)) return message.channel.send(`У Вас нет прав для выполнения выдачи данной роли`);
 
-        user.addRole(id);
-    message.channel.send(`Роль ${message.guild.roles.get(id).name} выдана!`) */
+        toRole .addRole(id);
+    message.channel.send(`Роль ${message.guild.roles.get(id).name} выдана!`) 
     }
 });
