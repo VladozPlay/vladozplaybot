@@ -94,7 +94,6 @@ client.on('message', message => {
 const modRoles = ['496730168862441472'];
 const toGiveRoles = ['494596867192258579', '494618127473180673']
 
-
 client.on('message', message => {
     if (message.content.startsWith(`$addrole`)) {
         let mod = false;
@@ -102,7 +101,9 @@ client.on('message', message => {
         let messageArray = message.content.split(/\s+/g);
         let toRole = message.guild.member(message.mentions.users.first() || message.guild.members.get(messageArray[1]));
 
-        let role = message.guild.role(message.mentions.roles.first() || message.guild.roles.get(messageArray[2]));
+        let role = message.mentions.roles.first();
+
+console.log(role);
 
         if (!role) return message.channel.send(`Укажите роль`);
 
