@@ -91,8 +91,8 @@ client.on('message', message => {
     }
 });
 
-const modRoles = ['сюда id ролей модеров', 'через запятую'];
-const toGiveRoles = ['сюда id ролей для выдачи', 'через запятую']
+const modRoles = ['496730168862441472'];
+const toGiveRoles = ['494618127473180673', '494596867192258579']
 
 client.on('message', message => {
     if (message.content.startsWith(`$addrole`)) {
