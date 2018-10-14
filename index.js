@@ -23,7 +23,7 @@ let arr = {
 'Arma 2': '497770785319026702',
 'Arma 3': '493441673918021646',
 'Borderlands 2': '499465919773409280',
-'Counter-Strike: Global Offensive': '493441668826267659',
+'Counter-Strike Global Offensive': '493441668826267659',
 'Crossout': '497770786782969857',
 'DOTA 2': '493441665630208014',
 'Dead by Daylight': '493441673242607637',
