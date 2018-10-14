@@ -98,9 +98,7 @@ client.on('message', message => {
     if (message.content.startsWith(`$addrole`)) {
         let mod = false;
 
-console.log(message.member.roles)
-
-        /* let messageArray = message.content.split(/\s+/g);
+ let messageArray = message.content.split(/\s+/g);
 let toRole = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
 
        let id = messageArray[2];
@@ -115,7 +113,7 @@ return message.channel.send(`Роль ${message.guild.roles.get(id).name} выд
 }
     
         modRoles.forEach(function(roleID) {
-            if (message.member.roles.includes(roleID)) {
+            if (message.member.roles.has(roleID)) {
                 mod = true;
             }
         })
@@ -125,6 +123,6 @@ return message.channel.send(`Роль ${message.guild.roles.get(id).name} выд
         if (!toGiveRoles.includes(id)) return message.channel.send(`У Вас нет прав для выполнения выдачи данной роли`);
 
         toRole.addRole(id);
-    message.channel.send(`Роль ${message.guild.roles.get(id).name} выдана!`) */
+    message.channel.send(`Роль ${message.guild.roles.get(id).name} выдана!`) 
     }
 });
