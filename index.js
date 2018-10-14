@@ -90,3 +90,41 @@ client.on('message', message => {
 
     }
 });
+
+const modRoles = ['496730168862441472'];
+const toGiveRoles = ['494596867192258579', '494618127473180673']
+
+client.on('message', message => {
+    if (message.content.startsWith(`$addrole`)) {
+        let mod = false;
+
+console.log(message.member.roles)
+
+        /* let messageArray = message.content.split(/\s+/g);
+let toRole = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+
+       let id = messageArray[2];
+
+        if (!id) return message.channel.send(`Укажите ID роли`);
+    if (message.member.roles.size == 1 && !message.member.hasPermission('ADMINISTRATOR'))  return message.channel.send(`У Вас нет прав для выполнения выдачи данной роли`);
+    
+if(!message.member.hasPermission('ADMINISTRATOR'))  {
+    toRole.addRole(id).catch(console.error);
+
+return message.channel.send(`Роль ${message.guild.roles.get(id).name} выдана!`);
+}
+    
+        modRoles.forEach(function(roleID) {
+            if (message.member.roles.includes(roleID)) {
+                mod = true;
+            }
+        })
+
+        if (!mod) return message.channel.send(`У Вас нет прав для выполнения данной команды`);
+
+        if (!toGiveRoles.includes(id)) return message.channel.send(`У Вас нет прав для выполнения выдачи данной роли`);
+
+        toRole.addRole(id);
+    message.channel.send(`Роль ${message.guild.roles.get(id).name} выдана!`) */
+    }
+});
