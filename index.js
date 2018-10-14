@@ -91,8 +91,8 @@ client.on('message', message => {
     }
 });
 
-const modRoles = ['496730168862441472'];
-const toGiveRoles = ['494618127473180673', '494596867192258579']
+const modRoles = ['сюда id ролей модеров', 'через запятую'];
+const toGiveRoles = ['сюда id ролей для выдачи', 'через запятую']
 
 client.on('message', message => {
     if (message.content.startsWith(`$addrole`)) {
@@ -103,7 +103,12 @@ client.on('message', message => {
         let id = messageArray[2];
 
         if (!id) return message.channel.send(`Укажите ID роли`);
-
+    if (!message.member.roles && !message.member.hasPermission('ADMINISTRATOR'))  return message.channel.send(`У Вас нет прав для выполнения выдачи данной роли`);
+    
+if(!message.member.hasPermission('ADMINISTRATOR'))  {
+    user.addRole(id).catch(console.error);
+}
+    
         modRoles.forEach(function(roleID) {
             if (message.member.roles.includes(roleID)) {
                 mod = true;
