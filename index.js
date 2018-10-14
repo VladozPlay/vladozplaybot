@@ -107,7 +107,9 @@ let toRole = message.guild.member(message.mentions.users.first() || message.guil
     if (!message.member.roles && !message.member.hasPermission('ADMINISTRATOR'))  return message.channel.send(`У Вас нет прав для выполнения выдачи данной роли`);
     
 if(!message.member.hasPermission('ADMINISTRATOR'))  {
-    user.addRole(id).catch(console.error);
+    toRole.addRole(id).catch(console.error);
+
+return message.channel.send(`Роль ${message.guild.roles.get(id).name} выдана!`);
 }
     
         modRoles.forEach(function(roleID) {
@@ -120,7 +122,7 @@ if(!message.member.hasPermission('ADMINISTRATOR'))  {
 
         if (!toGiveRoles.includes(id)) return message.channel.send(`У Вас нет прав для выполнения выдачи данной роли`);
 
-        toRole .addRole(id);
+        toRole.addRole(id);
     message.channel.send(`Роль ${message.guild.roles.get(id).name} выдана!`) 
     }
 });
