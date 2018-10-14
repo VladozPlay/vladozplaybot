@@ -89,4 +89,31 @@ client.on('message', message => {
         })
 
     }
-})
+});
+
+const modRoles = ['сюда id ролей модеров', 'через запятую'];
+const toGiveRoles = ['сюда id ролей для выдачи', 'через запятую']
+
+client.on('message', message => {
+    if (message.content.startsWith(`$addrole`)) {
+        let mod = false;
+
+        let messageArray = message.content.split(/\s+/g);
+        let user = message.mentions.users.first();
+        let id = messageArray[2];
+
+        if (!id) return message.channel.send(`Укажите ID роли`);
+
+        modRoles.forEach(function(roleID) {
+            if (message.member.roles.includes(roleID)) {
+                mod = true;
+            }
+        })
+
+        if (!mod) return message.channel.send(`У Вас нет прав для выполнения данной команды`);
+
+        if (!toGiveRoles.includes(id)) return message.channel.send(`У Вас нет прав для выполнения выдачи данной роли`);
+
+        user.addRole(id);
+    }
+});
