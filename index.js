@@ -99,7 +99,7 @@ client.on('message', message => {
         let mod = false;
 
         let messageArray = message.content.split(/\s+/g);
-        let user = message.mentions.users.first();
+        let user = message.members.get(messageArray[2])
         let id = messageArray[2];
 
         if (!id) return message.channel.send(`Укажите ID роли`);
