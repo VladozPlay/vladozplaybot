@@ -103,8 +103,6 @@ client.on('message', message => {
 
         let role = message.mentions.roles.first();
 
-console.log(role);
-
         if (!role) return message.channel.send(`Укажите роль`);
 
         modRoles.forEach(function(roleID) {
