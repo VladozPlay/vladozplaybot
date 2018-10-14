@@ -98,20 +98,14 @@ client.on('message', message => {
     if (message.content.startsWith(`$addrole`)) {
         let mod = false;
 
- let messageArray = message.content.split(/\s+/g);
-let toRole = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+        let messageArray = message.content.split(/\s+/g);
+        let toRole = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
 
-       let id = messageArray[2];
+        let id = messageArray[2];
 
         if (!id) return message.channel.send(`Укажите ID роли`);
-    if (message.member.roles.size == 1 && !message.member.hasPermission('ADMINISTRATOR'))  return message.channel.send(`У Вас нет прав для выполнения выдачи данной роли`);
-    
-if(!message.member.hasPermission('ADMINISTRATOR'))  {
-    toRole.addRole(id).catch(console.error);
+        if (message.member.roles.size == 1 && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.send(`У Вас нет прав для выполнения выдачи данной роли`);
 
-return message.channel.send(`Роль ${message.guild.roles.get(id).name} выдана!`);
-}
-    
         modRoles.forEach(function(roleID) {
             if (message.member.roles.has(roleID)) {
                 mod = true;
@@ -123,6 +117,6 @@ return message.channel.send(`Роль ${message.guild.roles.get(id).name} выд
         if (!toGiveRoles.includes(id)) return message.channel.send(`У Вас нет прав для выполнения выдачи данной роли`);
 
         toRole.addRole(id);
-    message.channel.send(`Роль ${message.guild.roles.get(id).name} выдана!`) 
+        message.channel.send(`Роль ${message.guild.roles.get(id).name} выдана!`)
     }
 });
