@@ -100,7 +100,8 @@ client.on('message', message => {
 
         let messageArray = message.content.split(/\s+/g);
         //let user = message.guild.members.get(user.id)
-console.log(message.guild.members.get(message.mentions.members.first()));
+let toPunish = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+console.log(toPunish.user.tag);
 console.log(messageArray[1]);
        /* let id = messageArray[2];
 
