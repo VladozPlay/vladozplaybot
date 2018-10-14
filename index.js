@@ -53,6 +53,7 @@ let arr = {
 'SCUM': '493447021760610305',
 'San Andreas Multiplayer': '497770788586258462',
 'Team Fortress 2': '493441675222319104',
+'Terraria': '500718057644359690',
 'The Elder Scrolls Online': '493447023039610900',
 'The Witcher 3': '497770791312818228',
 'Unturned': '493444691879133184',
