@@ -144,3 +144,4 @@ function color () {
 };
 
 client.on('ready', color);
+
