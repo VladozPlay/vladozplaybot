@@ -56,8 +56,8 @@ client.on('message', message => {
     }
 });
 
-const modRoles0 = ['496730168862441472'];
-const clanRoles0 = ['494618127473180673']
+const modRoles1 = ['496730168862441472'];
+const clanRoles1 = ['494618127473180673']
 
 client.on('message', message => {
     if (message.content.startsWith(`!выдатьБАН`)) {
@@ -67,7 +67,7 @@ client.on('message', message => {
         let toRole = message.guild.member(message.mentions.users.first() || message.guild.members.get(messageArray[1]));
         if (!toRole) return message.channel.send('Укажите нарушителя!')
         
-        modRoles0.forEach(function(roleID) {
+        modRoles1.forEach(function(roleID) {
             if (message.member.roles.has(roleID)) {
                 mod = true;
             }
@@ -75,7 +75,7 @@ client.on('message', message => {
 
         if (!mod) return message.channel.send(`У Вас нет прав для выполнения данной команды.`);
 
-        clanRoles0.forEach(function(roleID) {
+        clanRoles1.forEach(function(roleID) {
             toRole.addRole(roleID).catch(console.error)
         })
 
