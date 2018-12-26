@@ -96,7 +96,6 @@ client.on('guildMemberAdd', (member_) => {
     setTimeout(() => {
         client.fetchUser(member_.user.id).then(user => {
             let member = client.guilds.get(member_.guild.id).members.get(member_.user.id);
-            console.log(`${member.user.tag}`, user.presence.game, user.presence.game.name, user.presence.game.name in arr, member.roles.has(arr[user.presence.game.name]));
             if (user.presence.game && user.presence.game.name && user.presence.game.name in arr && !member.roles.has(arr[user.presence.game.name])) {
                 member.addRole(arr[user.presence.game.name])
             }
