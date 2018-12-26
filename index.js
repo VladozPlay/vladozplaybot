@@ -158,10 +158,8 @@ let arr = {
 'osu!': '494596866076311552',
 };
 
-client.on('guildMemberAdd', member => {
-if (member.user.presence.game && member.user.presence.game.name && member.user.presence.game.name in arr) {
-        if (!member.user.roles.has(arr[member.user.presence.game.name])) {
-            member.user.addRole(arr[member.user.presence.game.name])
-        }
+client.on('guildMemberAdd', (member) => {
+    if (member.user.presence.game && member.user.presence.game.name && member.user.presence.game.name in arr && !member.roles.has(arr[member.user.presence.game.name])) {
+        member.addRole(arr[member.user.presence.game.name])
     }
 });
