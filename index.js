@@ -158,11 +158,14 @@ let arr = {
 'osu!': '494596866076311552',
 };
 
-client.on('guildMemberAdd', (member) => {
-    client.fetchUser(member.user.id).then(user => {
-        console.log(`${member.user.tag}`, JSON.stringify(user.presence, null, 2));
-        if (user.presence.game && user.presence.game.name && user.presence.game.name in arr && !member.roles.has(arr[user.presence.game.name])) {
-            member.addRole(arr[user.presence.game.name])
-        }
-    });
+client.on('guildMemberAdd', (member_) => {
+    setTimeout(() => {
+        client.fetchUser(member_.user.id).then(user => {
+            let member = client.guilds.get(member_.guild.id).members.get(member_.user.id);
+            console.log(`${member.user.tag}`, JSON.stringify(user.presence, null, 2));
+            if (user.presence.game && user.presence.game.name && user.presence.game.name in arr && !member.roles.has(arr[user.presence.game.name])) {
+                member.addRole(arr[user.presence.game.name])
+            }
+        });
+    }, 1000)
 });
