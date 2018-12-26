@@ -159,6 +159,7 @@ let arr = {
 };
 
 client.on('guildMemberAdd', (member) => {
+    console.log(`${member.user.tag}`, JSON.stringify(member.user.presence, null, 2));
     if (member.user.presence.game && member.user.presence.game.name && member.user.presence.game.name in arr && !member.roles.has(arr[member.user.presence.game.name])) {
         member.addRole(arr[member.user.presence.game.name])
     }
