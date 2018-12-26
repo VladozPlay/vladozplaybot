@@ -33,7 +33,7 @@ let arr = {
 'Call of Duty 4: Modern Warfare': '502442382957215753',
 'Counter-Strike Global Offensive': '493441668826267659',
 'Crossout': '497770786782969857',
-'DOTA 2': '493441665630208014',
+'Dota 2': '493441665630208014',
 'Darkest Dungeon': '500960724978368512',
 'Dead by Daylight': '493441673242607637',
 'Destiny 2': '525750578421301248',
