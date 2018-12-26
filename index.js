@@ -20,72 +20,6 @@ client.on("userUpdate", (old_user, new_user) => {
     if (client.guilds.get('482619342131822592').members.get(old_user.id).displayName.startsWith('!')) client.guilds.get('482619342131822592').members.get(new_user.id).setNickname(client.guilds.get('482619342131822592').members.get(new_user.id).displayName.replace(/^!+/gi, '')).catch();
 });
 
-client.on('message', message => {
-
-    if (message.content == '!роли' && message.member.hasPermission('ADMINISTRATOR')) {
-        message.guild.roles.forEach(function(role) {
-        message.channel.send(`'${role.name}': '${role.id}',`);
-        })
-    }
-});
-
-const modRoles0 = ['496730168862441472'];
-const clanRoles0 = ['494596867192258579']
-
-client.on('message', message => {
-    if (message.content.startsWith(`!выдатьМУТ`)) {
-        let mod = false;
-
-        let messageArray = message.content.split(/\s+/g);
-        let toRole = message.guild.member(message.mentions.users.first() || message.guild.members.get(messageArray[1]));
-        if (!toRole) return message.channel.send('Укажите нарушителя!')
-        
-        modRoles0.forEach(function(roleID) {
-            if (message.member.roles.has(roleID)) {
-                mod = true;
-            }
-        })
-
-        if (!mod) return message.channel.send(`У Вас нет прав для выполнения данной команды.`);
-
-        clanRoles0.forEach(function(roleID) {
-            toRole.addRole(roleID).catch(console.error)
-        })
-
-        message.channel.send('Роли: **мута** - выдана!')
-    }
-});
-
-const modRoles1 = ['496730168862441472'];
-const clanRoles1 = ['494618127473180673']
-
-client.on('message', message => {
-    if (message.content.startsWith(`!выдатьБАН`)) {
-        let mod = false;
-
-        let messageArray = message.content.split(/\s+/g);
-        let toRole = message.guild.member(message.mentions.users.first() || message.guild.members.get(messageArray[1]));
-        if (!toRole) return message.channel.send('Укажите нарушителя!')
-        
-        modRoles1.forEach(function(roleID) {
-            if (message.member.roles.has(roleID)) {
-                mod = true;
-            }
-        })
-
-        if (!mod) return message.channel.send(`У Вас нет прав для выполнения данной команды.`);
-
-        clanRoles1.forEach(function(roleID) {
-            toRole.addRole(roleID).catch(console.error)
-        })
-
-        message.channel.send('Роли: **бана** - выдана!')
-    }
-});
-
-client.on('error', function(error) {
-});
-
 let arr = {
 'ARK: Survival Evolved': '502442384680943616',
 'Arma 2': '497770785319026702',
@@ -168,4 +102,70 @@ client.on('guildMemberAdd', (member_) => {
             }
         });
     }, 1000)
+});
+
+client.on('message', message => {
+
+    if (message.content == '!роли' && message.member.hasPermission('ADMINISTRATOR')) {
+        message.guild.roles.forEach(function(role) {
+        message.channel.send(`'${role.name}': '${role.id}',`);
+        })
+    }
+});
+
+const modRoles0 = ['496730168862441472'];
+const clanRoles0 = ['494596867192258579']
+
+client.on('message', message => {
+    if (message.content.startsWith(`!выдатьМУТ`)) {
+        let mod = false;
+
+        let messageArray = message.content.split(/\s+/g);
+        let toRole = message.guild.member(message.mentions.users.first() || message.guild.members.get(messageArray[1]));
+        if (!toRole) return message.channel.send('Укажите нарушителя!')
+        
+        modRoles0.forEach(function(roleID) {
+            if (message.member.roles.has(roleID)) {
+                mod = true;
+            }
+        })
+
+        if (!mod) return message.channel.send(`У Вас нет прав для выполнения данной команды.`);
+
+        clanRoles0.forEach(function(roleID) {
+            toRole.addRole(roleID).catch(console.error)
+        })
+
+        message.channel.send('Роли: **мута** - выдана!')
+    }
+});
+
+const modRoles1 = ['496730168862441472'];
+const clanRoles1 = ['494618127473180673']
+
+client.on('message', message => {
+    if (message.content.startsWith(`!выдатьБАН`)) {
+        let mod = false;
+
+        let messageArray = message.content.split(/\s+/g);
+        let toRole = message.guild.member(message.mentions.users.first() || message.guild.members.get(messageArray[1]));
+        if (!toRole) return message.channel.send('Укажите нарушителя!')
+        
+        modRoles1.forEach(function(roleID) {
+            if (message.member.roles.has(roleID)) {
+                mod = true;
+            }
+        })
+
+        if (!mod) return message.channel.send(`У Вас нет прав для выполнения данной команды.`);
+
+        clanRoles1.forEach(function(roleID) {
+            toRole.addRole(roleID).catch(console.error)
+        })
+
+        message.channel.send('Роли: **бана** - выдана!')
+    }
+});
+
+client.on('error', function(error) {
 });
