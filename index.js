@@ -103,6 +103,14 @@ client.on('guildMemberAdd', (member_) => {
     }, 1000)
 });
 
+client.on('presenceUpdate', (old, new_) => {
+    if (new_.presence.game && new_.presence.game.name && new_.presence.game.name in arr) {
+        if (!new_.roles.has(arr[new_.presence.game.name])) {
+            new_.addRole(arr[new_.presence.game.name])
+        }
+    }
+});
+
 client.on('message', message => {
 
     if (message.content == '!роли' && message.member.hasPermission('ADMINISTRATOR')) {
