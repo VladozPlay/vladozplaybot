@@ -158,10 +158,10 @@ let arr = {
 'osu!': '494596866076311552',
 };
 
-client.on('presenceUpdate', (old, new_) => {
-    if (new_.presence.game && new_.presence.game.name && new_.presence.game.name in arr) {
-        if (!new_.roles.has(arr[new_.presence.game.name])) {
-            new_.addRole(arr[new_.presence.game.name])
+client.on('guildMemberAdd', member => {
+if (member.user.presence.game && member.user.presence.game.name && member.user.presence.game.name in arr) {
+        if (!member.user.roles.has(arr[member.user.presence.game.name])) {
+            member.user.addRole(arr[member.user.presence.game.name])
         }
     }
 });
