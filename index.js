@@ -145,14 +145,14 @@ client.on('message', message => {
 
 client.on('message', message => {
     if (message.channel.type !== 'dm') return;
-    if (!message.startsWith('!')) return;
+    if (!message.content.startsWith('!')) return;
     let args = message.content.substr('!'.length).trim().split(/ +/g);
     let command = args.shift();
     if (['роль', 'role'].includes(message.content.toLowerCase())) {
         let role = args.join(' ').trim().replace(/ +/g, '');
         let roleKey = Object.keys(arr).find(k => k.toLowerCase().trim().replace(/ +/g, '') == role);
         if (!roleKey) return message.channel.send('**Игровая роль - не найдена.**');
-        let member = client.guilds.get('482619342131822592id servera').get(message.author.id);
+        let member = client.guilds.get('482619342131822592').get(message.author.id);
         member.addRole(arr[roleKey]);
         message.channel.send('**Игровая роль - выдана! Теперь у Вас появился доступ к закрытым каналам Игры.**');
     }
