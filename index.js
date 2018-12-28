@@ -147,7 +147,7 @@ client.on('message', message => {
     if (message.channel !== 'dm') return;
     let args = message.content.substring(1).trim().split(/ +/g);
     let command = args.shift();
-    if (['роль'].includes(message.content.toLowerCase()) {
+    if (['роль', 'role'].includes(message.content.toLowerCase()) {
         let role = args.join(' ').trim().replace(/ +/g, '');
         let roleKey = Object.keys(arr).find(k => k.toLowerCase().trim().replace(/ +/g, '') == role);
         if (!roleKey) return message.channel.send('**Игровая роль - не найдена.**');
