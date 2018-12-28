@@ -158,6 +158,7 @@ client.on('message', message => {
     }
 });
 
+
 const modRoles0 = ['496730168862441472'];
 const clanRoles0 = ['494596867192258579']
 
