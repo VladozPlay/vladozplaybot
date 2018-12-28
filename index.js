@@ -15,7 +15,7 @@ client.on('guildMemberAdd', member => {
 :pushpin:  **Запрещенно:** Использование каналов не по назначению.
 :trophy: **Все правила:** <#498380773481775104> 
 
-На нашем сервере все участники разделены **Игровыми Ролями**.
+На нашем сервере все участники разделены - **Игровыми Ролями**.
 У каждой игры - есть закрытые каналы, доступ к которым, есть только у участников с **Ролью-Игры**.
 Самописный бот(Я - <@500694392341004295>) - автоматически выдает **Игровую Роль**, когда вы заходите в любую игру.
 Если вы сидите с **телефона** или у вас **не синхронизируются** игры с Дискордом - Есть решение.
@@ -144,16 +144,17 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
-if (message.channel !== 'dm') return;
-let args = message.content.substring(1).trim().split(/ +/g);
-let command = args.shift();
-if (['роль', 'role'].includes(message.content.toLowerCase())) {
-let role = args.join(' ').trim().replace(/ +/g, '');
-let roleKey = Object.keys(arr).find(k => k.toLowerCase().trim().replace(/ +/g, '') == role);
-if (!roleKey) return message.channel.send('**Игровая роль - не найдена.**');
-message.member.addRole(arr[roleKey]);
-message.channel.send('**Игровая роль - выдана! Теперь у Вас появился доступ к закрытым каналам Игры.**');
-}
+    if (message.channel !== 'dm') return;
+    let args = message.content.substring(1).trim().split(/ +/g);
+    let command = args.shift();
+    if (['роль'].includes(message.content.toLowerCase()) {
+        let role = args.join(' ').trim().replace(/ +/g, '');
+        let roleKey = Object.keys(arr).find(k => k.toLowerCase().trim().replace(/ +/g, '') == role);
+        if (!roleKey) return message.channel.send('**Игровая роль - не найдена.**');
+        let member = client.guilds.get('id servera').get(message.author.id);
+        member.addRole(arr[roleKey]);
+        message.channel.send('**Игровая роль - выдана! Теперь у Вас появился доступ к закрытым каналам Игры.**');
+    }
 });
 
 const modRoles0 = ['496730168862441472'];
