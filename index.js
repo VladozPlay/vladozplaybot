@@ -145,7 +145,7 @@ client.on('message', message => {
 
 client.on('message', message => {
     if (message.channel.type !== 'dm') return;
-    if (!message.startsWith('!')) return;
+    if (!message.content.startsWith('!')) return;
     let args = message.content.substr('!'.length).trim().split(/ +/g);
     let command = args.shift();
     if (['роль', 'role'].includes(message.content.toLowerCase())) {
