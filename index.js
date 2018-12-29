@@ -20,6 +20,7 @@ client.on('guildMemberAdd', member => {
 Самописный бот(Я - <@500694392341004295>) - автоматически выдает **Игровую Роль**, когда вы заходите в любую игру.
 Если вы сидите с **телефона** или у вас **не синхронизируются** игры с Дискордом - Есть решение.
 :green_heart: Команда \`!роль\` вас спасет. Она выдает **Игровую Роль**.  Пример: \`!роль dota2\` & \`!роль csgo\`. 
+:blue_heart: Использовать эту команду можно только в **Личных Сообщениях** со мной(Я - <@500694392341004295>)!
 :purple_heart: Если же у вас не получиться это сделать. Пишите Администраторам. Всего Доброго!
 
 **Есть вопросы связанные с сервером? Пиши - Создателю:** <@267781147222605825>
@@ -151,12 +152,13 @@ client.on('message', message => {
     console.log('cmd', args, command);
     if (command === 'роль') {
         let member = client.guilds.get('482619342131822592').members.get(message.author.id);
+        if (args.join(' ').trim() == '') return message.channel.send('Ошибка! Введите пожалуйста **Игровую Роль**.');
         let roleID = arr[Object.keys(arr).find(a => a.toLowerCase().replace(/ +/g, '') == args.join(' ').trim().toLowerCase().replace(/ +/g, ''))];
         if (!roleID)
-            message.channel.send('нет роли');
+            message.channel.send('Ошибка! Вы ввели не правильное название **Игровой Роли** или Эта роль не существует.');
         else {
             member.addRole(roleID);
-            message.channel.send('все ок, брат');
+            message.channel.send('**Игровая Роль** - выдана! Теперь у тебя есть доступ к закрытым каналам Игры.');
         }
     }
 });
