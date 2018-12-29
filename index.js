@@ -146,18 +146,20 @@ client.on('message', message => {
 client.on('message', message => {
     if (message.channel.type !== 'dm') return;
     if (!message.content.startsWith('!')) return;
-    let args = message.content.substr('!'.length).trim().split(/ +/g);
-    let command = args.shift();
-    if (['роль', 'role'].includes(message.content.toLowerCase())) {
-        let role = args.join(' ').trim().replace(/ +/g, '');
-        let roleKey = Object.keys(arr).find(k => k.toLowerCase().trim().replace(/ +/g, '') == role);
-        if (!roleKey) return message.channel.send('роль не найдена');
-        let member = client.guilds.get('482619342131822592').get(message.author.id);
-        member.addRole(arr[roleKey]);
-        message.channel.send('vso ok');
+    let args = message.content.substr(1).trim().split(/ +/g);
+    let command = args.shift().trim();
+    console.log('cmd', args, command);
+    if (command === 'роль') {
+        let member = client.guilds.get('482619342131822592').members.get(message.author.id);
+        let roleID = arr[Object.keys(arr).find(a => a.toLowerCase().replace(/ +/g, '') == args.join(' ').trim().toLowerCase().replace(/ +/g, ''))];
+        if (!roleID)
+            message.channel.send('нет роли');
+        else {
+            member.addRole(roleID);
+            message.channel.send('все ок, брат');
+        }
     }
 });
-
 
 const modRoles0 = ['496730168862441472'];
 const clanRoles0 = ['494596867192258579']
