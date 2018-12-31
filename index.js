@@ -60,7 +60,7 @@ let arr = {
 'Call of Duty 4: Modern Warfare': '502442382957215753',
 'COD 4 MW': '502442382957215753',
 'COD 4: MW': '502442382957215753',
-'Counter-Strike Global Offensive': '493441668826267659',
+'Counter-Strike: Global Offensive': '493441668826267659',
 'CSGO': '493441668826267659',
 'CS:GO': '493441668826267659',
 'Crossout': '497770786782969857',
