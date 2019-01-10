@@ -237,8 +237,8 @@ client.on('message', message => {
 client.on('error', function(error) {
 });
 
-const modRoles1 = ['532974487893966859'];
-const clanRoles1 = ['529719426824798208']
+const modRoles2 = ['532974487893966859'];
+const clanRoles2 = ['529719426824798208']
 
 client.on('message', message => {
     if (message.content.startsWith(`!выдатьWFA`)) {
@@ -248,7 +248,7 @@ client.on('message', message => {
         let toRole = message.guild.member(message.mentions.users.first() || message.guild.members.get(messageArray[1]));
         if (!toRole) return message.channel.send('Укажите участника!')
         
-        modRoles1.forEach(function(roleID) {
+        modRoles2.forEach(function(roleID) {
             if (message.member.roles.has(roleID)) {
                 mod = true;
             }
@@ -256,7 +256,7 @@ client.on('message', message => {
 
         if (!mod) return message.channel.send(`У Вас нет прав для выполнения данной команды.`);
 
-        clanRoles1.forEach(function(roleID) {
+        clanRoles2.forEach(function(roleID) {
             toRole.addRole(roleID).catch(console.error)
         })
 
