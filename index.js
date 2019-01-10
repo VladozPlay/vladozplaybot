@@ -203,7 +203,7 @@ client.on('message', message => {
             toRole.addRole(roleID).catch(console.error)
         })
 
-        message.channel.send('Роли: **мута** - выдана!')
+        message.channel.send('Роль: **мута** - выдана!')
     }
 });
 
@@ -230,9 +230,36 @@ client.on('message', message => {
             toRole.addRole(roleID).catch(console.error)
         })
 
-        message.channel.send('Роли: **бана** - выдана!')
+        message.channel.send('Роль: **бана** - выдана!')
     }
 });
 
 client.on('error', function(error) {
+});
+
+const modRoles1 = ['532974487893966859'];
+const clanRoles1 = ['529719426824798208']
+
+client.on('message', message => {
+    if (message.content.startsWith(`!выдатьWFA`)) {
+        let mod = false;
+
+        let messageArray = message.content.split(/\s+/g);
+        let toRole = message.guild.member(message.mentions.users.first() || message.guild.members.get(messageArray[1]));
+        if (!toRole) return message.channel.send('Укажите участника!')
+        
+        modRoles1.forEach(function(roleID) {
+            if (message.member.roles.has(roleID)) {
+                mod = true;
+            }
+        })
+
+        if (!mod) return message.channel.send(`У Вас нет прав для выполнения данной команды.`);
+
+        clanRoles1.forEach(function(roleID) {
+            toRole.addRole(roleID).catch(console.error)
+        })
+
+        message.channel.send('Роль: **участника Альянса** - выдана!')
+    }
 });
