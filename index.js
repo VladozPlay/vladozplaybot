@@ -242,7 +242,7 @@ client.on('message', message => {
 client.on('error', function(error) {
 });
 
-const modRoles2 = ['532974487893966859'];
+const modRoles2 = ['532974487893966859','535936925622730773'];
 const clanRoles2 = ['529719426824798208']
 
 client.on('message', message => {
