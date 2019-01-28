@@ -29,8 +29,7 @@ client.on('guildMemberAdd', member => {
 
 client.on("ready", () => {
     function clear_nicks() {
-        client.guilds.get('482619342131822592').members.filter(memb => memb.displayName.startsWith('!')).forEach(member => member.setNickname(member.displayName.replace(/^!+/gi, '')).catch())
-    }
+        client.guilds.get('482619342131822592').members.filter(memb => memb.user.id !== '267781147222605825' && memb.displayName.startsWith('!')).forEach(member => member.setNickname(member.displayName.replace(/^!+/gi, '')).catch())    }
     clear_nicks();
     setInterval(clear_nicks, 300000);
 });
