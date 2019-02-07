@@ -268,3 +268,4 @@ client.on('message', message => {
         message.channel.send('Роль: **участника Альянса** - выдана!')
     }
 });
+
