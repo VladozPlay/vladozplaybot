@@ -47,6 +47,9 @@ client.on("userUpdate", (old_user, new_user) => {
 
 let arr = {
 'ARK: Survival Evolved': '502442384680943616',
+'ARK': '502442384680943616',	
+'Apex Legends': '544234768339042304',
+'Apex': '544234768339042304',
 'Arma 2': '497770785319026702',
 'Arma 3': '493441673918021646',
 'Artifact': '525750588751872032',
