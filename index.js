@@ -190,6 +190,7 @@ client.on('message', message => {
     let args = message.content.substr(1).trim().split(/ +/g);
     let command = args.shift().trim();
     console.log('cmd', args, command);
+	if (command === 'роль') {
         let member = client.guilds.get('482619342131822592').members.get(message.author.id);
         if (args.join(' ').trim() == '') return message.channel.send('Ошибка! Введите пожалуйста **Игровую Роль**.');
         let roleID = arr[Object.keys(arr).find(a => a.toLowerCase().replace(/ +/g, '') == args.join(' ').trim().toLowerCase().replace(/ +/g, ''))];
