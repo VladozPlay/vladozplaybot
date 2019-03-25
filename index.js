@@ -301,3 +301,15 @@ client.on("voiceStateUpdate", (old_, new_) => {
         new_.guild.channels.get("532979534564163620").send("В КАНАЛЕ \"СОБЕСЕДОВАНИЕ\" СИДИТ БРОДЯГА, КОТОРЫЙ ЖДЕТ, КОГДА ВЫ ЕГО ПРИМИТЕ! @everyone");
     
 });
+client.on(
+    "guildMemberAdd",
+    member =>
+        client.channels.get("494979819411603456")
+            .send(`${member} присоединился! На сервере ${member.guild.members.size} участников!\nЕго id: ${member.id} | Полный ник: ${member.user.tag}`)
+);
+client.on(
+    "guildMemberRemove",
+    member =>
+        client.channels.get("494979819411603456")
+            .send(`${member.user.tag} вышел! На сервере ${member.guild.members.size} участников!\nЕго id: ${member.id}`)
+);
