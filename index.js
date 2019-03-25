@@ -180,7 +180,7 @@ client.on('message', message => {
         message.guild.roles.forEach(function(role) {
             roles += `'${role.name}': '${role.id}',`;
         })
-        message.channel.send(roles);
+        message.channel.send(roles, {split: true});
     }
 });
 
