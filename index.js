@@ -305,11 +305,11 @@ client.on(
     "guildMemberAdd",
     member =>
         client.channels.get("494979819411603456")
-            .send(`${member} присоединился! На сервере ${member.guild.members.size} участников!\nЕго id: ${member.id} | Полный ник: ${member.user.tag}`)
+            .send(`**${member}** присоединился! На сервере **${member.guild.members.size}** участников!\nЕго id: **${member.id}** | Полный ник: **${member.user.tag}**`)
 );
 client.on(
     "guildMemberRemove",
     member =>
         client.channels.get("494979819411603456")
-            .send(`${member.user.tag} вышел! На сервере ${member.guild.members.size} участников!\nЕго id: ${member.id}`)
+            .send(`**${member.user.tag}** вышел! На сервере **${member.guild.members.size}** участников!\nЕго id: **${member.id}**`)
 );
