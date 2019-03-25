@@ -178,7 +178,7 @@ client.on('message', message => {
     if (message.content == '!роли' && message.member.hasPermission('ADMINISTRATOR')) {
         let roles = '';
         message.guild.roles.forEach(function(role) {
-            roles += `'${role.name}': '${role.id}',`;
+            roles += `'${role.name}': '${role.id}',\n`;
         })
         message.channel.send(roles, {split: true});
     }
