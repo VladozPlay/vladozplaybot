@@ -298,18 +298,18 @@ client.on("voiceStateUpdate", (old_, new_) => {
         && !new_.roles.has("532974487893966859")
         && !new_.roles.has("545931058588155904")
     )
-        new_.guild.channels.get("532979534564163620").send("В КАНАЛЕ \"СОБЕСЕДОВАНИЕ\" СИДИТ БРОДЯГА, КОТОРЫЙ ЖДЕТ, КОГДА ВЫ ЕГО ПРИМИТЕ! @everyone");
+        new_.guild.channels.get("532979534564163620").send("\`\`\`fix\nУважаемые Лидеры и Рекрутеры:\`\`\`\nВ канале **собеседование** - Вас ожидает новобранец, который желает вступить в наши ряды.\nПожалуйста, уделите ему несколько минут. Это не трудно. Это быстро. Это увеличит наш онлайн.\nПостоянная ссылка на канал: **собеседование** - https://discord.gg/GhKQrtT | @everyone");
     
 });
 client.on(
     "guildMemberAdd",
     member =>
         client.channels.get("494979819411603456")
-            .send(`**${member}** присоединился!\nНа сервере **${member.guild.members.size}** участников!\nЕго id: **${member.id}**`)
+            .send(`**${member}** - присоединился!\nЕго id: **${member.id}**\nНа сервере **${member.guild.members.size}** - участников!`)
 );
 client.on(
     "guildMemberRemove",
     member =>
         client.channels.get("494979819411603456")
-            .send(`**${member.user.tag}** вышел!\nНа сервере **${member.guild.members.size}** участников!\nЕго id: **${member.id}**`)
+            .send(`**${member.user.tag}** - вышел!\nЕго id: **${member.id}**\nНа сервере **${member.guild.members.size}** - участников!`)
 );
