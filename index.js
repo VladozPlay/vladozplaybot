@@ -175,11 +175,12 @@ client.on('presenceUpdate', (old, new_) => {
 });
 
 client.on('message', message => {
-
     if (message.content == '!роли' && message.member.hasPermission('ADMINISTRATOR')) {
+        let roles = '';
         message.guild.roles.forEach(function(role) {
-        message.channel.send(`'${role.name}': '${role.id}',`);
+            roles += `'${role.name}': '${role.id}',`;
         })
+        message.channel.send(roles);
     }
 });
 
@@ -189,7 +190,6 @@ client.on('message', message => {
     let args = message.content.substr(1).trim().split(/ +/g);
     let command = args.shift().trim();
     console.log('cmd', args, command);
-    if (command === 'роль') {
         let member = client.guilds.get('482619342131822592').members.get(message.author.id);
         if (args.join(' ').trim() == '') return message.channel.send('Ошибка! Введите пожалуйста **Игровую Роль**.');
         let roleID = arr[Object.keys(arr).find(a => a.toLowerCase().replace(/ +/g, '') == args.join(' ').trim().toLowerCase().replace(/ +/g, ''))];
@@ -284,4 +284,19 @@ client.on('message', message => {
 
         message.channel.send('Роль: **участника Альянса** - выдана!')
     }
+});
+
+client.on("voiceStateUpdate", (old_, new_) => {
+    if (
+        new_.voiceChannelID === "532979636821295104"
+        && new_.roles.has("493444430661943314")
+        && !new_.roles.has("529719426824798208")
+        && !new_.roles.has("535936925622730773")
+        && !new_.roles.has("545937754345963521")
+        && !new_.roles.has("554359251951157250")
+        && !new_.roles.has("532974487893966859")
+        && !new_.roles.has("545931058588155904")
+    )
+        new_.guild.channels.get("532979534564163620").send("В КАНАЛЕ \"СОБЕСЕДОВАНИЕ\" СИДИТ БРОДЯГА, КОТОРЫЙ ЖДЕТ, КОГДА ВЫ ЕГО ПРИМИТЕ! @everyone");
+    
 });
