@@ -320,3 +320,7 @@ client.on(
         client.channels.get("494979819411603456")
             .send(`**${member.user.tag}** - вышел!\nЕго id: **${member.id}**\nНа сервере **${member.guild.members.size}** - участников!`)
 );
+
+client.on("message", () => {
+    if (message.content == '!я пидор') message.channel.send('Я тоже')
+});
