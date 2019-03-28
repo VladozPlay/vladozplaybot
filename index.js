@@ -326,7 +326,7 @@ client.on("message", (message) => {
 });
 
 client.on("message", (message) => {
-    if (!message.author.hasPermission("ADMINISTRATOR")) return;
+    if (!message.member.hasPermission("ADMINISTRATOR")) return;
     const command = "!текст ";
     if (message.content.startsWith(command)) {
         message.chanel.send(message.content.substring(command.length))
