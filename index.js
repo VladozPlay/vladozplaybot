@@ -329,7 +329,7 @@ client.on("message", (message) => {
     if (!message.member.hasPermission("ADMINISTRATOR")) return;
     const command = "!текст ";
     if (message.content.startsWith(command)) {
-        message.chanel.send(message.content.substring(command.length))
+        message.channel.send(message.content.substring(command.length))
         message.delete();
     }
 });
