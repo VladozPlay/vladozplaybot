@@ -294,10 +294,8 @@ client.on("voiceStateUpdate", (old_, new_) => {
         && new_.roles.has("493444430661943314")		// Warframe
         && !new_.roles.has("529719426824798208")	// Warframe - Альянс
         && !new_.roles.has("535936925622730773")	// Warframe - Рекрутер
-        && !new_.roles.has("545937754345963521")	// Warframe - Фармер
         && !new_.roles.has("554359251951157250")	// Warframe - Билдер
         && !new_.roles.has("532974487893966859")	// Warframe - Лидер Клана
-        && !new_.roles.has("545931058588155904")	// Warframe - Услуги
         && !new_.roles.has("554368513695940628")	// Warframe - Тералисты
         && !new_.roles.has("560521415246217234")	// Warframe - Клан [CS]
         && !new_.roles.has("560521415527366657")	// Warframe - Клан [BA]
