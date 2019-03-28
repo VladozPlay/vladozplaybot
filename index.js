@@ -324,3 +324,12 @@ client.on(
 client.on("message", (message) => {
     if (message.content == '!ты козел') message.channel.send('да')
 });
+
+client.on("message", (message) => {
+    if (!message.author.hasPermission("ADMINISTRATOR")) return;
+    const command = "!текст ";
+    if (message.content.startsWith(command)) {
+        message.chanel.send(message.content.substring(command.length))
+        message.delete();
+    }
+});
