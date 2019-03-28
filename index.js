@@ -287,22 +287,25 @@ client.on('message', message => {
     }
 });
 
+const joinedRecently = {};
 client.on("voiceStateUpdate", (old_, new_) => {
     if (
         old_.voiceChannelID !== "532979636821295104"
         && new_.voiceChannelID === "532979636821295104"
-        && new_.roles.has("493444430661943314")		// Warframe
-        && !new_.roles.has("529719426824798208")	// Warframe - Альянс
-        && !new_.roles.has("535936925622730773")	// Warframe - Рекрутер
-        && !new_.roles.has("554359251951157250")	// Warframe - Билдер
-        && !new_.roles.has("532974487893966859")	// Warframe - Лидер Клана
-        && !new_.roles.has("554368513695940628")	// Warframe - Тералисты
-        && !new_.roles.has("560521415246217234")	// Warframe - Клан [CS]
-        && !new_.roles.has("560521415527366657")	// Warframe - Клан [BA]
-        && !new_.roles.has("560521413115510786")	// Warframe - Клан [ATS]
-    )
-        new_.guild.channels.get("532979534564163620").send("\`\`\`fix\nУважаемые Лидеры и Рекрутеры:\`\`\`\nВ канале **собеседование** - Вас ожидает новобранец, который желает вступить в наши ряды.\nПожалуйста, уделите ему несколько минут. Это не трудно. Это быстро. Это увеличит наш онлайн.\nПостоянная ссылка на канал: **собеседование** - https://discord.gg/GhKQrtT | everyone");
-    
+        && new_.roles.has("493444430661943314")        // Warframe
+        && !new_.roles.has("529719426824798208")    // Warframe - Альянс
+        && !new_.roles.has("535936925622730773")    // Warframe - Рекрутер
+        && !new_.roles.has("554359251951157250")    // Warframe - Билдер
+        && !new_.roles.has("532974487893966859")    // Warframe - Лидер Клана
+        && !new_.roles.has("554368513695940628")    // Warframe - Тералисты
+        && !new_.roles.has("560521415246217234")    // Warframe - Клан [CS]
+        && !new_.roles.has("560521415527366657")    // Warframe - Клан [BA]
+        && !new_.roles.has("560521413115510786")    // Warframe - Клан [ATS]
+        && (!(new_.id in joinedRecently) || Date.now() >= joinedRecently[new_.id])
+    ) {
+        new_.guild.channels.get("532979534564163620").send(`\`\`\`fix\nУважаемые Лидеры и Рекрутеры:\`\`\`\nВ канале **собеседование** - Вас ожидает новобранец ${new_}, который желает вступить в наши ряды.\nПожалуйста, уделите ему несколько минут. Это не трудно. Это быстро. Это увеличит наш онлайн.\nПостоянная ссылка на канал: **собеседование** - https://discord.gg/GhKQrtT | everyone`);
+        joinedRecently[new_.id] = Date.now() + 6e4;
+    }
 });
 
 client.on(
