@@ -321,6 +321,6 @@ client.on(
             .send(`**${member.user.tag}** - вышел!\nЕго id: **${member.id}**\nНа сервере **${member.guild.members.size}** - участников!`)
 );
 
-client.on("message", () => {
-    if (message.content == '!я пидор') message.channel.send('Я тоже')
+client.on("message", (message) => {
+    if (message.content == '!ты козел') message.channel.send('да')
 });
