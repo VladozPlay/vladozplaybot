@@ -331,7 +331,7 @@ client.on("message", (message) => {
     if (message.content == '!2') message.channel.send('В разработке');
     if (message.content == '!3') message.channel.send('В разработке');
     if (message.content == '!отписка') message.channel.send('В разработке');
-    if (message.content == '!пещеры') message.channel.send('```fix\nКарты пещер - Равнины Эйдолона и Долина Сфер:```\nhttps://i.imgur.com/KuEU8CS.png | https://i.imgur.com/uBwvnZU.png');
+    if (message.content == '!пещеры') message.channel.send('```fix\nКарты пещер - Равнины Эйдолона и Долина Сфер:```\n**Р.Э.**: https://i.imgur.com/KuEU8CS.png | **Д.С.**: https://i.imgur.com/uBwvnZU.png');
 
 });
 
