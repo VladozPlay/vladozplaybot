@@ -322,7 +322,17 @@ client.on(
 );
 
 client.on("message", (message) => {
-    if (message.content == '!ты козел') message.channel.send('да')
+    if (message.content == '!команды') message.channel.send('В разработке');
+    if (message.content == '!рыбалка') message.channel.send('В разработке');
+    if (message.content == '!1') message.channel.send('В разработке');
+    if (message.content == '!гонки') message.channel.send('В разработке');
+    if (message.content == '!ресурсы') message.channel.send('В разработке');
+    if (message.content == '!баро') message.channel.send('В разработке');
+    if (message.content == '!2') message.channel.send('В разработке');
+    if (message.content == '!3') message.channel.send('В разработке');
+    if (message.content == '!отписка') message.channel.send('В разработке');
+    if (message.content == '!пещеры') message.channel.send('```fix\nКарты пещер - Равнины Эйдолона и Долина Сфер:```\nhttps://i.imgur.com/KuEU8CS.png\nhttps://i.imgur.com/uBwvnZU.png');
+
 });
 
 client.on("message", (message) => {
