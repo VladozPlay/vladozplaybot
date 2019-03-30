@@ -175,7 +175,7 @@ client.on('presenceUpdate', (old, new_) => {
 });
 
 client.on('message', message => {
-    if (message.content == '!роли' && message.member.hasPermission('ADMINISTRATOR')) {
+    if (message.content == '!роли' && message.channel && message.channel.type == "text" && message.member.hasPermission('ADMINISTRATOR')) {
         let roles = '';
         message.guild.roles.forEach(function(role) {
             roles += `'${role.name}': '${role.id}',\n`;
