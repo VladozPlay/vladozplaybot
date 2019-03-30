@@ -321,7 +321,7 @@ client.on(
 		.send(`**${member.user.tag}** - вышел!\nЕго id: **${member.id}**\nНа сервере **${member.guild.members.size}** - участников!`)
 );
 
-client.on("message", (message) => {
+client.on("message", async (message) => {
 	if (message.content == '!команды') message.channel.send('\`\`\`fix\nСписок команд:\`\`\`\n**!команды** - \`список всех команд на сервере\`\n**!пещеры** - \`карты с пещерами\`\n**!отписка** - \`информация о написании отписки\`\n**!гонки** - \`карта с гонками\`\n**!баро** - \`время прихода баро китира\`');
 	if (message.content == '!гонки') message.channel.send('\`\`\`fix\nКарта гонок - Долина Сфер:\`\`\`\nhttps://i.imgur.com/AMHndnO.png');
 	if (message.content == '!баро') message.channel.send('В разработке');
