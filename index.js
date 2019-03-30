@@ -331,7 +331,7 @@ client.on("message", (message) => {
 });
 
 client.on("message", (message) => {
-    if (!message.member.hasPermission("ADMINISTRATOR")) return;
+    if (!message.channel || message.channel.type !== "text" ||  !message.member.hasPermission("ADMINISTRATOR")) return;
     const command = "!текст ";
     if (message.content.startsWith(command)) {
         message.channel.send(message.content.substring(command.length))
