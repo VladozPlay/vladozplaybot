@@ -189,7 +189,7 @@ const modRoles0 = ['496730168862441472', '493848689261936641', '5292597009198612
 const clanRoles0 = ['494596867192258579']
 
 client.on('message', message => {
-    if (message.content.startsWith(`!выдатьМУТ`)) {
+    if (message.content.startsWith(`!мут`)) {
         let mod = false;
 
         let messageArray = message.content.split(/\s+/g);
@@ -216,7 +216,7 @@ const modRoles1 = ['496730168862441472', '493848689261936641', '5292597009198612
 const clanRoles1 = ['494618127473180673']
 
 client.on('message', message => {
-    if (message.content.startsWith(`!выдатьБАН`)) {
+    if (message.content.startsWith(`!бан`)) {
         let mod = false;
 
         let messageArray = message.content.split(/\s+/g);
@@ -239,57 +239,6 @@ client.on('message', message => {
     }
 });
 
-client.on('error', function(error) {
-});
-
-const modRoles2 = ['532974487893966859','535936925622730773'];
-const clanRoles2 = ['529719426824798208']
-
-client.on('message', message => {
-    if (message.content.startsWith(`!выдатьWFA`)) {
-        let mod = false;
-
-        let messageArray = message.content.split(/\s+/g);
-        let toRole = message.guild.member(message.mentions.users.first() || message.guild.members.get(messageArray[1]));
-        if (!toRole) return message.channel.send('Укажите участника!')
-        
-        modRoles2.forEach(function(roleID) {
-            if (message.member.roles.has(roleID)) {
-                mod = true;
-            }
-        })
-
-        if (!mod) return message.channel.send(`У Вас нет прав для выполнения данной команды.`);
-
-        clanRoles2.forEach(function(roleID) {
-            toRole.addRole(roleID).catch(console.error)
-        })
-
-        message.channel.send('Роль: **участника Альянса** - выдана!')
-    }
-});
-
-const joinedRecently = {};
-client.on("voiceStateUpdate", (old_, new_) => {
-    if (
-        old_.voiceChannelID !== "532979636821295104"
-        && new_.voiceChannelID === "532979636821295104"
-        && new_.roles.has("493444430661943314")        // Warframe
-        && !new_.roles.has("529719426824798208")    // Warframe - Альянс
-        && !new_.roles.has("535936925622730773")    // Warframe - Рекрутер
-        && !new_.roles.has("554359251951157250")    // Warframe - Билдер
-        && !new_.roles.has("532974487893966859")    // Warframe - Лидер Клана
-        && !new_.roles.has("554368513695940628")    // Warframe - Тералисты
-        && !new_.roles.has("560521415246217234")    // Warframe - Клан [CS]
-        && !new_.roles.has("560521415527366657")    // Warframe - Клан [BA]
-        && !new_.roles.has("560521413115510786")    // Warframe - Клан [ATS]
-        && (!(new_.id in joinedRecently) || Date.now() >= joinedRecently[new_.id])
-    ) {
-        new_.guild.channels.get("532979534564163620").send(`\`\`\`fix\nУважаемые Лидеры и Рекрутеры:\`\`\`\nВ канале **собеседование** - Вас ожидает новобранец: ${new_}, который желает вступить в наши ряды.\nПожалуйста, уделите ему несколько минут. Это не трудно. Это быстро. Это увеличит наш онлайн.\nПостоянная ссылка на канал: **собеседование** - https://discord.gg/GhKQrtT | @everyone`);
-        joinedRecently[new_.id] = Date.now() + 6e4;
-    }
-});
-
 client.on(
 	"guildMemberAdd",
 	member =>
@@ -302,21 +251,6 @@ client.on(
 	client.channels.get("494979819411603456")
 		.send(`**${member.user.tag}** - вышел!\nЕго id: **${member.id}**\nНа сервере **${member.guild.members.size}** - участников!`)
 );
-
-client.on("message", async (message) => {
-	if (message.content == '!команды') message.channel.send('\`\`\`fix\nСписок команд:\`\`\`\n**!команды** - \`список всех команд на сервере\`\n**!пещеры** - \`карты с пещерами\`\n**!отписка** - \`информация о написании отписки\`\n**!гонки** - \`карта с гонками\`\n**!баро** - \`время прихода баро китира\`');
-	if (message.content == '!гонки') message.channel.send('\`\`\`fix\nКарта гонок - Долина Сфер:\`\`\`\nhttps://i.imgur.com/AMHndnO.png');
-	if (message.content == '!баро') message.channel.send('В разработке');
-	if (message.content == '!отписка') {
-		await message.channel.send('\`\`\`fix\nИнформация о канале «🛵отписка»:\`\`\`\nЕсли вы по каким либо причинам не сможете играть более 15-ти дней, Вам нужно отписать об этом в чат <#531530350783102996>.\nЗапрещается не проявлять активность в игре в течении 15-ти дней без отписки. Карается - Изгнанием.\n\n\`\`\`fix\nПравила оформления отписки:\`\`\`');
-		await message.channel.send('1. Игровой никнейм:\n2. Причина отсутствия:\n3. Количество дней:\n\n`Причины и Количество дней - пишите, хотя бы, примерно. Причины типа: ХЗ - рассматриваться не будут.`\n\n\`\`\`fix\nОБЯЗАТЕЛЬНО К ПРОЧТЕНИЮ:\`\`\`');
-		await message.channel.send('Когда **вернетесь** в игру обратно - **удалите** свою отписку!\nЕсли вы **не написали** сюда отписку, то **не возмущайтесь**, если Вас **выгонят** из клана.');
-		};
-	if (message.content == '!пещеры') {
-		await message.channel.send('\`\`\`fix\nКарта пещер - Равнины Эйдолона:\`\`\`\nhttps://i.imgur.com/KuEU8CS.png');
-		await message.channel.send('\`\`\`fix\nКарта пещер - Долина Сфер:\`\`\`\nhttps://i.imgur.com/uBwvnZU.png');
-		};
-});
 
 client.on("message", (message) => {
 	if (!message.channel || message.channel.type !== "text" ||  !message.member.hasPermission("ADMINISTRATOR")) return;
