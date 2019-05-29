@@ -260,3 +260,10 @@ client.on("message", (message) => {
 		message.delete();
     }
 });
+
+client.on('error', function(error) {
+});
+
+client.on('ready', () => {
+    console.log('Ready');
+});
