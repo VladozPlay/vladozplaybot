@@ -243,13 +243,13 @@ client.on(
 	"guildMemberAdd",
 	member =>
 	client.channels.get("494979819411603456")
-		.send(`**${member}** - присоединился!\nЕго id: **${member.id}**\nНа сервере **${member.guild.members.size}** - участников!`)
+		.send(`**${member}** - присоединился!\nЕго id: **${member.id}**\nНа сервере **${member.guild.memberCount}** - участников!`)
 );
 client.on(
 	"guildMemberRemove",
 	member =>
 	client.channels.get("494979819411603456")
-		.send(`**${member.user.tag}** - вышел!\nЕго id: **${member.id}**\nНа сервере **${member.guild.members.size}** - участников!`)
+		.send(`**${member.user.tag}** - вышел!\nЕго id: **${member.id}**\nНа сервере **${member.guild.memberCount}** - участников!`)
 );
 
 client.on("message", (message) => {
